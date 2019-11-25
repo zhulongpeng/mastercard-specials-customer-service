@@ -4,13 +4,13 @@ import com.mastercard.api.OfferResp;
 import com.mastercard.api.SpecialsAPI;
 import java.util.List;
 
-public class offerInterfaceTest {
+public class offerInterfaceSandboxTest {
 
     public void main(String[] args) throws Exception{
-        String fileName = "3ti_sandbox_key-sandbox.p12";//Certificate file name
-        String userName = "3ti_sandbox_key";//userName
-        String password = "q1w2e3r4t5";//password
-        String oauth_consumer_key = "yhviHduc9vXNnT4AcHPYC8PpxoDebON3TxR7N33e7495c202!791ad4d4f0704a63b7d8b7db1512d7770000000000000000";//oauth_consumer_key
+        String fileName = "Your Certificate file name";//Certificate file name e.g. 3ti_sandbox_key-sandbox.p12
+        String keyAlias = "keyAlias";//change this to the key alias you chose when you created your production key e.g. 3ti_sandbox_key
+        String password = "keyPassword";//change this to the key alias you chose when you created your production key e.g. q1w2e3r4t5
+        String oauth_consumer_key = "Your oauth_consumer_key";//You should copy this from "My Keys" on your project page e.g. yhviHduc9vXNnT4AcHPYC8PpxoDebON3TxR7N33e7495c202!791ad4d4f0704a63b7d8b7db1512d7770000000000000000
         String language= "en-SG";
         String category = "Culinary";
         String eligibleMarkets = "AU,CN,HK,ID,PH,SG,KR,TW";
@@ -29,7 +29,7 @@ public class offerInterfaceTest {
         Integer offset = 0;
         String sort = "";
         try {
-            String offers = SpecialsAPI.getOffers(fileName,userName,password,
+            String offers = SpecialsAPI.getOffers(fileName,keyAlias,password,
                     oauth_consumer_key,language,category,eligibleMarkets,
                      destinationMarkets,mastercardProduct,program,tags,
                      lastModifiedDate,coordinates,merchantName,

@@ -4,16 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--<groupId>com.mastercard.api</groupId>-->
     <groupId>io.github.zhulongpeng</groupId>
     <artifactId>mastercard-specials-customer-service</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <developers>
         <developer>
             <name>ygritte</name>
             <email>15755023962@163.com</email>
         </developer>
     </developers>
+
+
     <licenses>
         <license>
             <name>The MIT License</name>
@@ -25,18 +27,9 @@
         <developerConnection>scm:git:git@github.com:zhulongpeng/mastercard-specials-customer-service.git</developerConnection>
         <url>git@github.com:zhulongpeng/mastercard-specials-customer-service.git</url>
     </scm>
+
+
     <profiles>
-        <profile>
-            <!-- 本地开发环境 -->
-            <id>dev</id>
-            <properties>
-                <profiles.active>dev</profiles.active>
-            </properties>
-            <activation>
-                <!-- 设置默认激活这个配置 -->
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
         <profile>
             <!--打包环境-->
             <id>release</id>
@@ -56,14 +49,9 @@
                 </repository>
             </distributionManagement>
         </profile>
-        <profile>
-            <!-- 测试环境 -->
-            <id>beta</id>
-            <properties>
-                <profiles.active>beta</profiles.active>
-            </properties>
-        </profile>
     </profiles>
+
+
     <build>
         <plugins>
             <plugin>
@@ -74,17 +62,6 @@
                     <target>8</target>
                 </configuration>
             </plugin>
-
-
-            <!--<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            &lt;!&ndash;生产源码文件插件&ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -92,46 +69,44 @@
                 <configuration>
                     <attach>true</attach>
                 </configuration>
-                &lt;!&ndash;<executions>
+                <executions>
                     <execution>
                         <phase>compile</phase>
                         <goals>
                             <goal>jar</goal>
                         </goals>
                     </execution>
-                </executions>&ndash;&gt;
+                </executions>
             </plugin>
-            &lt;!&ndash;生产javadoc插件&ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.9.1</version>
-                &lt;!&ndash;<executions>
+                <executions>
                     <execution>
                         <phase>package</phase>
                         <goals>
                             <goal>jar</goal>
                         </goals>
                     </execution>
-                </executions>&ndash;&gt;
+                </executions>
             </plugin>
-            &lt;!&ndash;gpg加密插件&ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
-                &lt;!&ndash;<executions>
+                <executions>
                     <execution>
                         <phase>verify</phase>
                         <goals>
                             <goal>sign</goal>
                         </goals>
                     </execution>
-                </executions>&ndash;&gt;
-            </plugin>-->
-
+                </executions>
+            </plugin>
         </plugins>
     </build>
+
     <properties>
         <java.version>1.8</java.version>
         <spring-version>5.1.9.RELEASE</spring-version>
@@ -143,6 +118,7 @@
         <gpg.signature.skip>false</gpg.signature.skip>
         <log4j.version>1.2.17</log4j.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -166,4 +142,5 @@
             <version>5.1.8.RELEASE</version>
         </dependency>
     </dependencies>
+
 </project>

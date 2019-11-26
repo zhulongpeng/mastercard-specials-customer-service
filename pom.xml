@@ -49,7 +49,6 @@
     </distributionManagement>
 
     <profiles>
-
         <profile>
             <id>release</id>
             <build>
@@ -179,5 +178,4 @@
             <version>5.1.8.RELEASE</version>
         </dependency>
     </dependencies>
-
 </project>

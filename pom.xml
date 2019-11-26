@@ -7,6 +7,18 @@
     <name>mastercard-specials-customer-service</name>
     <description>This is a mastercard-specials-customer-service</description>
     <url>https://github.com/zhulongpeng/mastercard-specials-customer-service</url>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <groupId>io.github.zhulongpeng</groupId>
     <artifactId>mastercard-specials-customer-service</artifactId>
@@ -19,118 +31,118 @@
         </developer>
     </developers>
 
-
-    <licenses>
-        <license>
-            <name>The MIT License</name>
-            <url>http://opensource.org/licenses/MIT</url>
-        </license>
-    </licenses>
     <scm>
-        <connection>scm:git:git@github.com:zhulongpeng/mastercard-specials-customer-service.git</connection>
-        <developerConnection>scm:git:git@github.com:zhulongpeng/mastercard-specials-customer-service.git</developerConnection>
-        <url>git@github.com:zhulongpeng/mastercard-specials-customer-service.git</url>
+        <url>https://github.com/zhulongpeng/mastercard-specials-customer-service</url>
+        <connection>https://github.com/zhulongpeng/mastercard-specials-customer-service.git</connection>
+        <developerConnection>https://github.com/zhulongpeng</developerConnection>
     </scm>
 
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <profiles>
-        <profile>
-            <!-- 本地开发环境 -->
-            <id>dev</id>
-            <properties>
-                <profiles.active>dev</profiles.active>
-            </properties>
-            <activation>
-                <!-- 设置默认激活这个配置 -->
-                <activeByDefault>true</activeByDefault>
-            </activation>
 
-        </profile>
         <profile>
-            <!--打包环境-->
             <id>release</id>
-            <properties>
-                <profiles.active>release</profiles.active>
-            </properties>
-            <!--定义snapshots库和releases库的nexus地址-->
-            <distributionManagement>
-                <snapshotRepository>
-                    <!--oss需要对应到settings.xml下的service的id-->
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-                </snapshotRepository>
-                <repository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
-        </profile>
-        <profile>
-            <!-- 测试环境 -->
-            <id>beta</id>
-            <properties>
-                <profiles.active>beta</profiles.active>
-            </properties>
+            <build>
+                <plugins>
+                    <!--这是自动发布的插件-->
+                    <!--<plugin>-->
+                    <!--<groupId>org.sonatype.plugins</groupId>-->
+                    <!--<artifactId>nexus-staging-maven-plugin</artifactId>-->
+                    <!--<version>1.6.3</version>-->
+                    <!--<extensions>true</extensions>-->
+                    <!--<configuration>-->
+                    <!--<serverId>ossrh</serverId>-->
+                    <!--<nexusUrl>https://oss.sonatype.org/</nexusUrl>-->
+                    <!--<autoReleaseAfterClose>true</autoReleaseAfterClose>-->
+                    <!--</configuration>-->
+                    <!--</plugin>-->
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.5.3</version>
+                        <configuration>
+                            <autoVersionSubmodules>true</autoVersionSubmodules>
+                            <useReleaseProfile>false</useReleaseProfile>
+                            <releaseProfiles>release</releaseProfiles>
+                            <goals>deploy</goals>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.2</version>
+                        <configuration>
+                            <source>1.8</source>
+                            <target>1.8</target>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <!-- java8版本导致javadoc打包编译失败时候，添加-->
+                                <configuration>
+                                    <failOnError>false</failOnError>
+                                    <doclint>none</doclint>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
-    <build>
-        <plugins>
-            <!--编译插件-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            <!--生产源码文件插件-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <attach>true</attach>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!--生产javadoc插件-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!--gpg加密插件-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
-                <executions>
-                    <execution>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
     <properties>
         <java.version>1.8</java.version>

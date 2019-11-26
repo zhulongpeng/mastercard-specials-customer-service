@@ -481,8 +481,9 @@ public class SpecialsAPI {
         String path = SpecialsAPI.class.getClassLoader().getResource(fileName).getPath();
         if(!StringUtils.isEmpty(path)){
             return path;
+        }else{
+            throw new RuntimeException("Please put the certificate in the appropriate folder of the project!");
         }
-        return null;
     }
 
     public static PrivateKey loadSigningKey(String pkcs12KeyFilePath, String signingKeyAlias, String signingKeyPassword) throws Exception{

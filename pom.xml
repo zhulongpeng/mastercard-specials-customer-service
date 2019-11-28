@@ -32,7 +32,7 @@
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
-            <id>sonatype-nexus-staging</id>
+            <id>sonatype-nexus-staging</id> <!-- 等于上面Settings.xml中server的id值。-->
             <name>oss Staging Repository</name>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
@@ -100,6 +100,7 @@
                     </archive>
                 </configuration>
             </plugin>
+            <!-- 必须配置 source-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -113,6 +114,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--  必须配置 javadoc-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -126,6 +128,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--  必须配置 sonatype-->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -141,7 +144,7 @@
                 <version>1.6.7</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>sonatype-nexus-staging</serverId>
+                    <serverId>sonatype-nexus-staging</serverId> <!-- 等于上面Settings中server的id值。-->
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>false</autoReleaseAfterClose>
                     <sslAllowAll>true</sslAllowAll>
@@ -149,6 +152,7 @@
                     <detectBuildFailures>true</detectBuildFailures>
                 </configuration>
             </plugin>
+            <!-- 必须配置  GPG-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>

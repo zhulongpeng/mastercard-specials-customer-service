@@ -471,6 +471,7 @@ public class SpecialsAPI {
         JSONObject jsonObject = new JSONObject();
         String method = req.getRequestMethod();
         String authHeader = OAuth.getAuthorizationHeader(uri, method, jsonObject.toString(), StandardCharsets.UTF_8, oauth_consumer_key, loadSigningKey(getFilePath(fileName)+fileName, userName, password));
+//        String authHeader = OAuth.getAuthorizationHeader(uri, method, jsonObject.toString(), StandardCharsets.UTF_8, oauth_consumer_key, loadSigningKey(fileName, userName, password));
         req.setRequestProperty(OAuth.AUTHORIZATION_HEADER_NAME, authHeader);
     }
 

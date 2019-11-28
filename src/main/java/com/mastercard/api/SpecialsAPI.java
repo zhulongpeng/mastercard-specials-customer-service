@@ -5,10 +5,7 @@ import com.mastercard.api.filter.OAuth;
 import org.springframework.util.StringUtils;
 
 import javax.net.ssl.HttpsURLConnection;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -478,10 +475,21 @@ public class SpecialsAPI {
     }
 
     private static String getFilePath(String fileName) {
-        String path = SpecialsAPI.class.getClassLoader().getResource(fileName).getPath();
+        /*String path = SpecialsAPI.class.getClassLoader().getResource(fileName).getPath();
         if(!StringUtils.isEmpty(path)){
             return path;
         }else{
+            throw new RuntimeException("Please put the certificate in the appropriate folder of the project!");
+        }*/
+        URL u = Thread.currentThread().getContextClassLoader().getResource(fileName);
+        if(u == null) {
+            throw new RuntimeException("Please put the certificate in the appropriate folder of the project!");
+        }
+        System.out.println(u.getPath());
+        File f = new File(u.getPath());
+        if(f.exists()) {
+            return u.getPath();
+        }else {
             throw new RuntimeException("Please put the certificate in the appropriate folder of the project!");
         }
     }

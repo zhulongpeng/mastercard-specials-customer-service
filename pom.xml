@@ -6,8 +6,8 @@
 
     <groupId>io.github.zhulongpeng</groupId>
     <artifactId>mastercard-specials-customer-service</artifactId>
-    <version>1.0.2</version>
-    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
     <name>mastercard-specials-customer-service</name>
     <url>https://github.com/zhulongpeng/mastercard-specials-customer-service</url>
     <description>mastercard api related sdk</description>

@@ -23,7 +23,7 @@ public class JSONUtil {
     }
 
 
-    public static List<OfferResp> jsonToObject(String offer){
+    public static List<OfferResp> jsonToObject(String offer) {
         JSONObject jsonObject = JSON.parseObject(offer);
         String data = jsonObject.getObject("data", String.class);
         List<OfferResp> offerResps = jsonToList(data, OfferResp.class);

@@ -20,7 +20,7 @@ public class MastercardAPI {
 
     public static final Charset UTF8_CHARSET = StandardCharsets.UTF_8;
 
-    public static String getLanguages(String fileName, String userName, String password, String oauth_consumer_key,String clientId) throws Exception {
+    public static String getLanguages(String fileName, String userName, String password, String oauth_consumer_key, String clientId) throws Exception {
         try {
             StringBuffer url = new StringBuffer();
             url.append(httpURL);
@@ -31,7 +31,7 @@ public class MastercardAPI {
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json; charset=" + UTF8_CHARSET.name());
             connection.setRequestProperty("x-openApi-clientId", clientId);
-            sign(connection,fileName, userName, password, oauth_consumer_key);
+            sign(connection, fileName, userName, password, oauth_consumer_key);
             connection.connect();
             InputStream is = null;
             if (connection.getResponseCode() != 200) {
@@ -43,7 +43,7 @@ public class MastercardAPI {
             StringBuffer sb = new StringBuffer();
             while (true) {
                 String response = bis.readLine();
-                if(response == null){
+                if (response == null) {
                     break;
                 }
                 sb.append(response);
@@ -56,17 +56,17 @@ public class MastercardAPI {
         }
     }
 
-    public static String getCagtegories(String fileName, String userName, String password, String oauth_consumer_key,String clientId, String language){
+    public static String getCagtegories(String fileName, String userName, String password, String oauth_consumer_key, String clientId, String language) {
         try {
             StringBuffer url = new StringBuffer();
             url.append(httpURL);
-            url.append("/categories?language="+language);
+            url.append("/categories?language=" + language);
             HttpsURLConnection connection = (HttpsURLConnection) new URL(url.toString()).openConnection();
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json; charset=" + UTF8_CHARSET.name());
-            sign(connection,fileName, userName, password, oauth_consumer_key);
+            sign(connection, fileName, userName, password, oauth_consumer_key);
             connection.setRequestProperty("x-openApi-clientId", clientId);
             connection.connect();
             InputStream is = null;
@@ -79,7 +79,7 @@ public class MastercardAPI {
             StringBuffer sb = new StringBuffer();
             while (true) {
                 String response = bis.readLine();
-                if(response == null){
+                if (response == null) {
                     break;
                 }
                 sb.append(response);
@@ -92,27 +92,27 @@ public class MastercardAPI {
         }
     }
 
-    public static String getMerchants(String fileName, String userName, String password, String oauth_consumer_key,String clientId, String country_code, String merchant_id, String merchant_name){
-        if(merchant_name == null){
+    public static String getMerchants(String fileName, String userName, String password, String oauth_consumer_key, String clientId, String country_code, String merchant_id, String merchant_name) {
+        if (merchant_name == null) {
             merchant_name = "";
         }
-        if(merchant_id == null){
+        if (merchant_id == null) {
             merchant_id = "";
         }
-        if(country_code == null){
+        if (country_code == null) {
             country_code = "";
         }
         try {
             StringBuffer url = new StringBuffer();
             url.append(httpURL);
-            url.append("/merchants?merchant_name="+merchant_name+"&merchant_id="+merchant_id+"&country_code="+country_code);
+            url.append("/merchants?merchant_name=" + merchant_name + "&merchant_id=" + merchant_id + "&country_code=" + country_code);
             HttpsURLConnection connection = (HttpsURLConnection) new URL(url.toString()).openConnection();
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json; charset=" + UTF8_CHARSET.name());
             connection.setRequestProperty("x-openApi-clientId", clientId);
-            sign(connection,fileName, userName, password, oauth_consumer_key);
+            sign(connection, fileName, userName, password, oauth_consumer_key);
             connection.connect();
             InputStream is = null;
             if (connection.getResponseCode() != 200) {
@@ -124,7 +124,7 @@ public class MastercardAPI {
             StringBuffer sb = new StringBuffer();
             while (true) {
                 String response = bis.readLine();
-                if(response == null){
+                if (response == null) {
                     break;
                 }
                 sb.append(response);
@@ -137,18 +137,18 @@ public class MastercardAPI {
         }
     }
 
-    public static String getCountries(String fileName, String userName, String password, String oauth_consumer_key,String clientId, String language){
+    public static String getCountries(String fileName, String userName, String password, String oauth_consumer_key, String clientId, String language) {
         try {
             StringBuffer url = new StringBuffer();
             url.append(httpURL);
-            url.append("/countries?language="+language);
+            url.append("/countries?language=" + language);
             HttpsURLConnection connection = (HttpsURLConnection) new URL(url.toString()).openConnection();
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json; charset=" + UTF8_CHARSET.name());
             connection.setRequestProperty("x-openApi-clientId", clientId);
-            sign(connection,fileName, userName, password, oauth_consumer_key);
+            sign(connection, fileName, userName, password, oauth_consumer_key);
             connection.connect();
             InputStream is = null;
             if (connection.getResponseCode() != 200) {
@@ -160,7 +160,7 @@ public class MastercardAPI {
             StringBuffer sb = new StringBuffer();
             while (true) {
                 String response = bis.readLine();
-                if(response == null){
+                if (response == null) {
                     break;
                 }
                 sb.append(response);
@@ -173,18 +173,18 @@ public class MastercardAPI {
         }
     }
 
-    public static String getMastercardProducts(String fileName, String userName, String password, String oauth_consumer_key,String clientId, String language){
+    public static String getMastercardProducts(String fileName, String userName, String password, String oauth_consumer_key, String clientId, String language) {
         try {
             StringBuffer url = new StringBuffer();
             url.append(httpURL);
-            url.append("/mastercard-products?language="+language);
+            url.append("/mastercard-products?language=" + language);
             HttpsURLConnection connection = (HttpsURLConnection) new URL(url.toString()).openConnection();
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json; charset=" + UTF8_CHARSET.name());
             connection.setRequestProperty("x-openApi-clientId", clientId);
-            sign(connection,fileName, userName, password, oauth_consumer_key);
+            sign(connection, fileName, userName, password, oauth_consumer_key);
             connection.connect();
             InputStream is = null;
             if (connection.getResponseCode() != 200) {
@@ -196,7 +196,7 @@ public class MastercardAPI {
             StringBuffer sb = new StringBuffer();
             while (true) {
                 String response = bis.readLine();
-                if(response == null){
+                if (response == null) {
                     break;
                 }
                 sb.append(response);
@@ -209,18 +209,18 @@ public class MastercardAPI {
         }
     }
 
-    public static String getPrograms(String fileName, String userName, String password, String oauth_consumer_key,String clientId, String language, String eligible_markets){
+    public static String getPrograms(String fileName, String userName, String password, String oauth_consumer_key, String clientId, String language, String eligible_markets) {
         try {
             StringBuffer url = new StringBuffer();
             url.append(httpURL);
-            url.append("/programs?language="+language+ "&eligible_markets="+eligible_markets);
+            url.append("/programs?language=" + language + "&eligible_markets=" + eligible_markets);
             HttpsURLConnection connection = (HttpsURLConnection) new URL(url.toString()).openConnection();
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json; charset=" + UTF8_CHARSET.name());
             connection.setRequestProperty("x-openApi-clientId", clientId);
-            sign(connection,fileName, userName, password, oauth_consumer_key);
+            sign(connection, fileName, userName, password, oauth_consumer_key);
             connection.connect();
             InputStream is = null;
             if (connection.getResponseCode() != 200) {
@@ -232,7 +232,7 @@ public class MastercardAPI {
             StringBuffer sb = new StringBuffer();
             while (true) {
                 String response = bis.readLine();
-                if(response == null){
+                if (response == null) {
                     break;
                 }
                 sb.append(response);
@@ -245,7 +245,7 @@ public class MastercardAPI {
         }
     }
 
-    public static String getTags(String fileName, String userName, String password, String oauth_consumer_key, String clientId){
+    public static String getTags(String fileName, String userName, String password, String oauth_consumer_key, String clientId) {
         try {
             StringBuffer url = new StringBuffer();
             url.append(httpURL);
@@ -256,7 +256,7 @@ public class MastercardAPI {
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json; charset=" + UTF8_CHARSET.name());
             connection.setRequestProperty("x-openApi-clientId", clientId);
-            sign(connection,fileName, userName, password, oauth_consumer_key);
+            sign(connection, fileName, userName, password, oauth_consumer_key);
             connection.connect();
             InputStream is = null;
             if (connection.getResponseCode() != 200) {
@@ -268,7 +268,7 @@ public class MastercardAPI {
             StringBuffer sb = new StringBuffer();
             while (true) {
                 String response = bis.readLine();
-                if(response == null){
+                if (response == null) {
                     break;
                 }
                 sb.append(response);
@@ -282,7 +282,7 @@ public class MastercardAPI {
     }
 
     public static String getBenefits(String fileName, String userName, String password,
-                                     String oauth_consumer_key,String clientId,
+                                     String oauth_consumer_key, String clientId,
                                      String language,
                                      String category,
                                      String eligible_markets, String destination_markets,
@@ -290,60 +290,60 @@ public class MastercardAPI {
                                      String coordinates, String merchant_name,
                                      String benefit_title,
                                      Integer limit, Integer offset,
-                                     String sort){
-        if(language == null){
+                                     String sort) {
+        if (language == null) {
             language = "";
         }
-        if(category == null){
+        if (category == null) {
             category = "";
         }
-        if(eligible_markets == null){
+        if (eligible_markets == null) {
             eligible_markets = "";
         }
-        if(destination_markets == null){
+        if (destination_markets == null) {
             destination_markets = "";
         }
-        if(mastercard_product == null){
+        if (mastercard_product == null) {
             mastercard_product = "";
         }
-        if(last_modified_date == null){
+        if (last_modified_date == null) {
             last_modified_date = "";
         }
-        if(coordinates == null){
+        if (coordinates == null) {
             coordinates = "";
         }
-        if(merchant_name == null){
+        if (merchant_name == null) {
             merchant_name = "";
         }
-        if(benefit_title == null){
+        if (benefit_title == null) {
             benefit_title = "";
         }
         String lim = "";
-        if(limit == null){
+        if (limit == null) {
             lim = "";
-        }else{
+        } else {
             lim = String.valueOf(limit);
         }
         String off = "";
-        if(offset == null){
+        if (offset == null) {
             off = "";
-        }else{
+        } else {
             off = String.valueOf(offset);
         }
-        if(sort == null){
+        if (sort == null) {
             sort = "";
         }
         try {
             StringBuffer url = new StringBuffer();
             url.append(httpURL);
-            url.append("/benefits?language="+language+ "&category="+category+"&eligible_markets="+eligible_markets+"&destination_markets="+destination_markets+"&mastercard_product="+mastercard_product+"&last_modified_date="+last_modified_date+"&coordinates="+coordinates+"&merchant_name="+merchant_name+"&benefit_title="+benefit_title+"&limit="+lim+"&offset="+off+"&sort="+sort);
+            url.append("/benefits?language=" + language + "&category=" + category + "&eligible_markets=" + eligible_markets + "&destination_markets=" + destination_markets + "&mastercard_product=" + mastercard_product + "&last_modified_date=" + last_modified_date + "&coordinates=" + coordinates + "&merchant_name=" + merchant_name + "&benefit_title=" + benefit_title + "&limit=" + lim + "&offset=" + off + "&sort=" + sort);
             HttpsURLConnection connection = (HttpsURLConnection) new URL(url.toString()).openConnection();
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json; charset=" + UTF8_CHARSET.name());
             connection.setRequestProperty("x-openApi-clientId", clientId);
-            sign(connection,fileName, userName, password, oauth_consumer_key);
+            sign(connection, fileName, userName, password, oauth_consumer_key);
             connection.connect();
             InputStream is = null;
             if (connection.getResponseCode() != 200) {
@@ -355,7 +355,7 @@ public class MastercardAPI {
             StringBuffer sb = new StringBuffer();
             while (true) {
                 String response = bis.readLine();
-                if(response == null){
+                if (response == null) {
                     break;
                 }
                 sb.append(response);
@@ -369,82 +369,82 @@ public class MastercardAPI {
     }
 
     public static String getOffers(String fileName, String userName, String password,
-                                   String oauth_consumer_key,String clientId,
+                                   String oauth_consumer_key, String clientId,
                                    String language,
                                    String category, String eligible_markets,
                                    String destination_markets, String mastercard_product, String program, String tags,
                                    String last_modified_date, String coordinates, String merchantName,
                                    String card_product_id, String issuer_id,
                                    String offer_title, String merchant_type,
-                                   Integer limit, Integer offset, String sort){
-        if(language == null){
+                                   Integer limit, Integer offset, String sort) {
+        if (language == null) {
             language = "";
         }
-        if(category == null){
+        if (category == null) {
             category = "";
         }
-        if(eligible_markets == null){
+        if (eligible_markets == null) {
             eligible_markets = "";
         }
-        if(destination_markets == null){
+        if (destination_markets == null) {
             destination_markets = "";
         }
-        if(mastercard_product == null){
+        if (mastercard_product == null) {
             mastercard_product = "";
         }
-        if(program == null){
+        if (program == null) {
             program = "";
         }
-        if(tags == null){
+        if (tags == null) {
             tags = "";
         }
-        if(last_modified_date == null){
+        if (last_modified_date == null) {
             last_modified_date = "";
         }
-        if(coordinates == null){
+        if (coordinates == null) {
             coordinates = "";
         }
-        if(merchantName == null){
+        if (merchantName == null) {
             merchantName = "";
         }
-        if(card_product_id == null) {
+        if (card_product_id == null) {
             card_product_id = "";
         }
-        if(issuer_id == null){
+        if (issuer_id == null) {
             issuer_id = "";
         }
-        if(offer_title == null){
+        if (offer_title == null) {
             offer_title = "";
         }
-        if(merchant_type == null){
+        if (merchant_type == null) {
             merchant_type = "";
         }
         String lim = "";
-        if(limit == null){
+        if (limit == null) {
             lim = "";
-        }else{
+        } else {
             lim = String.valueOf(limit);
         }
         String off = "";
-        if(offset == null){
+        if (offset == null) {
             off = "";
-        }else{
+        } else {
             off = String.valueOf(off);
         }
-        if(sort == null){
+        if (sort == null) {
             sort = "";
         }
         try {
             StringBuffer url = new StringBuffer();
             url.append(httpURL);
-            url.append("/offers?language="+language+ "&category="+category+"&eligible_markets="+eligible_markets+"&destination_markets="+destination_markets+"&mastercard_product="+mastercard_product+"&program="+program+"&tags="+tags+"&last_modified_date="+last_modified_date+"&coordinates="+coordinates+"&merchantName="+merchantName+"&card_product_id="+card_product_id+"&issuer_id="+issuer_id+"&offer_title="+offer_title+"&merchant_type="+merchant_type+"&limit="+lim+"&offset="+off+"&sort="+sort);
+            url.append("/offers?language=" + language + "&category=" + category + "&eligible_markets=" + eligible_markets + "&destination_markets=" + destination_markets + "&mastercard_product=" + mastercard_product + "&program=" + program + "&tags=" + tags + "&last_modified_date=" + last_modified_date + "&coordinates=" + coordinates + "&merchantName=" + merchantName + "&card_product_id=" + card_product_id + "&issuer_id=" + issuer_id + "&offer_title=" + offer_title + "&merchant_type=" + merchant_type + "&limit=" + lim + "&offset=" + off + "&sort=" + sort);
             HttpsURLConnection connection = (HttpsURLConnection) new URL(url.toString()).openConnection();
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json; charset=" + UTF8_CHARSET.name());
             connection.setRequestProperty("x-openApi-clientId", clientId);
-            sign(connection,fileName, userName, password, oauth_consumer_key);
+            sign(connection, fileName, userName, password, oauth_consumer_key);
             connection.connect();
             InputStream is = null;
             if (connection.getResponseCode() != 200) {
@@ -456,7 +456,7 @@ public class MastercardAPI {
             StringBuffer sb = new StringBuffer();
             while (true) {
                 String response = bis.readLine();
-                if(response == null){
+                if (response == null) {
                     break;
                 }
                 sb.append(response);
@@ -478,7 +478,7 @@ public class MastercardAPI {
         }
         JSONObject jsonObject = new JSONObject();
         String method = req.getRequestMethod();
-        String authHeader = OAuth.getAuthorizationHeader(uri, method, jsonObject.toString(), StandardCharsets.UTF_8, oauth_consumer_key, loadSigningKey(getFilePath(fileName)+fileName, userName, password));
+        String authHeader = OAuth.getAuthorizationHeader(uri, method, jsonObject.toString(), StandardCharsets.UTF_8, oauth_consumer_key, loadSigningKey(getFilePath(fileName) + fileName, userName, password));
 //        String authHeader = OAuth.getAuthorizationHeader(uri, method, jsonObject.toString(), StandardCharsets.UTF_8, oauth_consumer_key, loadSigningKey(fileName, userName, password));
         req.setRequestProperty(OAuth.AUTHORIZATION_HEADER_NAME, authHeader);
     }
@@ -491,19 +491,19 @@ public class MastercardAPI {
             throw new RuntimeException("Please put the certificate in the appropriate folder of the project!");
         }*/
         URL u = Thread.currentThread().getContextClassLoader().getResource(fileName);
-        if(u == null) {
+        if (u == null) {
             throw new RuntimeException("Please put the certificate in the appropriate folder of the project!");
         }
         System.out.println(u.getPath());
         File f = new File(u.getPath());
-        if(f.exists()) {
+        if (f.exists()) {
             return u.getPath();
-        }else {
+        } else {
             throw new RuntimeException("Please put the certificate in the appropriate folder of the project!");
         }
     }
 
-    public static PrivateKey loadSigningKey(String pkcs12KeyFilePath, String signingKeyAlias, String signingKeyPassword) throws Exception{
+    public static PrivateKey loadSigningKey(String pkcs12KeyFilePath, String signingKeyAlias, String signingKeyPassword) throws Exception {
         KeyStore pkcs12KeyStore = KeyStore.getInstance("PKCS12", "SunJSSE");
         pkcs12KeyStore.load(new FileInputStream(pkcs12KeyFilePath), signingKeyPassword.toCharArray());
         return (PrivateKey) pkcs12KeyStore.getKey(signingKeyAlias, signingKeyPassword.toCharArray());

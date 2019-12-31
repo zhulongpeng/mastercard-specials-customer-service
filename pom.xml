@@ -7,12 +7,24 @@
     <groupId>io.github.zhulongpeng</groupId>
     <artifactId>mastercard-specials-customer-service</artifactId>
     <version>1.0.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <packaging>jar</packaging>
     <name>mastercard-specials-customer-service</name>
     <url>https://github.com/zhulongpeng/mastercard-specials-customer-service</url>
     <description>mastercard api related sdk</description>
 
-    <licenses>
+    <!--<licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
@@ -23,20 +35,20 @@
         <url>https://github.com/zhulongpeng/mastercard-specials-customer-service</url>
         <connection>https://github.com/zhulongpeng/mastercard-specials-customer-service.git</connection>
         <developerConnection>https://github.com/zhulongpeng</developerConnection>
-    </scm>
+    </scm>-->
 
-    <distributionManagement>
+    <!--<distributionManagement>
         <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id> <!-- 等于上面Settings.xml中server的id值。-->
+            <id>sonatype-nexus-snapshots</id> &lt;!&ndash; 等于上面Settings.xml中server的id值。&ndash;&gt;
             <name>oss Snapshots Repository</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
-            <id>sonatype-nexus-staging</id> <!-- 等于上面Settings.xml中server的id值。-->
+            <id>sonatype-nexus-staging</id> &lt;!&ndash; 等于上面Settings.xml中server的id值。&ndash;&gt;
             <name>oss Staging Repository</name>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
-    </distributionManagement>
+    </distributionManagement>-->
 
     <properties>
         <java.version>1.8</java.version>
@@ -81,7 +93,7 @@
         </developer>
     </developers>
 
-    <build>
+    <!--<build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -100,7 +112,7 @@
                     </archive>
                 </configuration>
             </plugin>
-            <!-- 必须配置 source-->
+            &lt;!&ndash; 必须配置 source&ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -114,7 +126,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--  必须配置 javadoc-->
+            &lt;!&ndash;  必须配置 javadoc&ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -128,7 +140,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--  必须配置 sonatype-->
+            &lt;!&ndash;  必须配置 sonatype&ndash;&gt;
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -144,7 +156,7 @@
                 <version>1.6.7</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>sonatype-nexus-staging</serverId> <!-- 等于上面Settings中server的id值。-->
+                    <serverId>sonatype-nexus-staging</serverId> &lt;!&ndash; 等于上面Settings中server的id值。&ndash;&gt;
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>false</autoReleaseAfterClose>
                     <sslAllowAll>true</sslAllowAll>
@@ -152,7 +164,7 @@
                     <detectBuildFailures>true</detectBuildFailures>
                 </configuration>
             </plugin>
-            <!-- 必须配置  GPG-->
+            &lt;!&ndash; 必须配置  GPG&ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -169,5 +181,5 @@
             </plugin>
         </plugins>
     </build>
-
+-->
 </project>

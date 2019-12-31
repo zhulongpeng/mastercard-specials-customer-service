@@ -2,7 +2,6 @@ package com.mastercard.api;
 
 import com.alibaba.fastjson.JSONObject;
 import com.mastercard.api.filter.OAuth;
-import org.springframework.util.StringUtils;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
